@@ -1,0 +1,26 @@
+{
+  "name": "pls-dev-test",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm db:check && pnpm build",
+    "db:migrate": "pnpm --filter @pls/db migrate",
+    "db:seed": "pnpm --filter @pls/db seed",
+    "db:check": "pnpm --filter @pls/db check",
+    "db:generate": "pnpm --filter @pls/db generate",
+    "import:properties": "pnpm --filter @pls/db run import-csv"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2",
+    "eslint": "^9.17.0",
+    "typescript-eslint": "^8.18.1",
+    "@eslint/js": "^9.17.0",
+    "prettier": "^3.4.2"
+  }
+}

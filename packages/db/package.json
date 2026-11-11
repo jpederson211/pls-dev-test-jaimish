@@ -1,0 +1,27 @@
+{
+  "name": "@pls/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "lint": "eslint src",
+    "test": "echo 'no tests'",
+    "generate": "drizzle-kit generate",
+    "check": "drizzle-kit check",
+    "migrate": "tsx --env-file=../../.env src/migrate.ts",
+    "seed": "tsx --env-file=../../.env src/seed.ts",
+    "import-csv": "tsx --env-file=../../.env src/import-properties.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.38.3",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.30.1",
+    "tsx": "^4.19.2",
+    "@types/node": "^22.10.2"
+  }
+}
