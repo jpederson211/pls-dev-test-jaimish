@@ -1,0 +1,1 @@
+ALTER TABLE "properties" ADD COLUMN "photo_count" integer DEFAULT 0 NOT NULL;

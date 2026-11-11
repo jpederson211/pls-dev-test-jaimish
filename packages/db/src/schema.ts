@@ -32,6 +32,7 @@ export const properties = pgTable(
     tier: text("tier"),
     ownerId: uuid("owner_id").references(() => owners.id),
     lastSaleDate: date("last_sale_date"),
+    photoCount: integer("photo_count").notNull().default(0),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [uniqueIndex("properties_tenant_apn_uq").on(t.tenantId, t.apn)],
