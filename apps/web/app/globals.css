@@ -18,3 +18,4 @@ aside.preview { width: 340px; background: #fff; border: 1px solid #e5e8ec; paddi
 aside.preview h3 { margin: 16px 0 6px; font-size: 13px; text-transform: uppercase; color: #5a6675; }
 aside.preview ul { padding-left: 18px; margin: 0; font-size: 13px; }
 .muted { color: #8a94a3; font-size: 13px; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }

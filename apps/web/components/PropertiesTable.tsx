@@ -36,7 +36,7 @@ export function PropertiesTable({ rows, params, selected }: Props) {
           <th>APN</th>
           <th>Address</th>
           <th>Owner</th>
-          <th>Units</th>
+          <th className="num">Units</th>
           <SortHeader label="Tier" field="tier" params={params} />
           <SortHeader label="Last touch" field="last_touch" params={params} />
         </tr>
@@ -49,7 +49,7 @@ export function PropertiesTable({ rows, params, selected }: Props) {
               <td><a href={link}>{r.apn}</a></td>
               <td><a href={link}>{r.address}, {r.city}</a></td>
               <td><a href={link}>{r.ownerName ?? "—"}</a></td>
-              <td><a href={link}>{formatUnits(r.units)}</a></td>
+              <td className="num"><a href={link}>{formatUnits(r.units)}</a></td>
               <td><a href={link}>{r.tier ?? "—"}</a></td>
               <td><a href={link}>{formatLastTouch(r.lastTouchAt)}</a></td>
             </tr>
