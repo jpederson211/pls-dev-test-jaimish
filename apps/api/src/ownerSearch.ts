@@ -18,7 +18,7 @@ export async function searchByOwnerName(name: string): Promise<PropertyRow[]> {
     order by p.apn
     limit 200
   `);
-  return rows.map((r: any) => ({
+  return rows.map((r) => ({
     id: String(r.id),
     apn: String(r.apn),
     address: String(r.address),
