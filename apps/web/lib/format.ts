@@ -6,5 +6,5 @@ export function formatLastTouch(iso: string | null): string {
 
 export function formatUnits(units: number | null, verified = false): string {
   if (units === null) return "—";
-  return verified ? `${units} (verified)` : String(units);
+  return verified ? `${units} ✓` : String(units);
 }
