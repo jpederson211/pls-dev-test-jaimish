@@ -1,4 +1,4 @@
-import { pgTable, text, uuid, integer, date, timestamp, uniqueIndex, index } from "drizzle-orm/pg-core";
+import { pgTable, boolean, text, uuid, integer, date, timestamp, uniqueIndex, index } from "drizzle-orm/pg-core";
 
 // Shared tables (no tenant_id) would go here. Everything below is tenant-owned.
 
@@ -33,6 +33,7 @@ export const properties = pgTable(
     ownerId: uuid("owner_id").references(() => owners.id),
     lastSaleDate: date("last_sale_date"),
     photoCount: integer("photo_count").notNull().default(0),
+    unitsVerified: boolean("units_verified").notNull().default(false),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [uniqueIndex("properties_tenant_apn_uq").on(t.tenantId, t.apn)],

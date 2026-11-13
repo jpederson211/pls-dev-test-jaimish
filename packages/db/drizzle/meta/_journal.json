@@ -15,6 +15,13 @@
       "when": 1794408695401,
       "tag": "0001_big_catseye",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794548149883,
+      "tag": "0002_public_next_avengers",
+      "breakpoints": true
     }
   ]
 }
