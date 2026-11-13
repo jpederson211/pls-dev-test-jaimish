@@ -2,7 +2,6 @@ import type { FastifyInstance } from "fastify";
 import { asc, desc, eq, ilike, sql } from "drizzle-orm";
 import { db, owners, properties, touches, campaigns, campaignMembers, tenantWhere } from "@pls/db";
 import { PropertySearchQuery, type PropertyPreview, type PropertyRow } from "@pls/types";
-import { searchByOwnerName } from "./ownerSearch.js";
 
 const lastTouch = sql<Date | null>`(select max(${touches.happenedAt}) from ${touches} where ${touches.propertyId} = ${properties.id})`;
 
@@ -22,8 +21,6 @@ export function registerPropertyRoutes(app: FastifyInstance) {
     const parsed = PropertySearchQuery.safeParse(req.query);
     if (!parsed.success) return reply.code(400).send({ error: parsed.error.flatten() });
     const q = parsed.data;
-
-    if (q.owner) return searchByOwnerName(q.owner);
 
     const direction = q.dir === "desc" ? desc : asc;
     const orderBy =
@@ -51,6 +48,7 @@ export function registerPropertyRoutes(app: FastifyInstance) {
           req.tenantId,
           q.apn ? ilike(properties.apn, `${q.apn}%`) : undefined,
           q.address ? ilike(properties.address, `%${q.address}%`) : undefined,
+          q.owner ? ilike(owners.name, `%${q.owner}%`) : undefined,
           q.tier ? eq(properties.tier, q.tier) : undefined,
         ),
       )
